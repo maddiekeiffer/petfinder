@@ -24,7 +24,7 @@ function Menu() {
       );
   return (
     <Box sx={{ width: '100%', bgcolor: 'rgba(153, 51, 255, 0.7)'}}>
-        <Tabs centered>
+        <Tabs value='login' centered>
             <StyledTab icon={<LogoutRoundedIcon />} value='login' label='Logout' href='/login' 
             onClick={() => {
             clearUser();
