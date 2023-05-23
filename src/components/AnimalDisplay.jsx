@@ -2,12 +2,12 @@ import React from 'react';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 
-const AnimalDisplay = ({ pet_id, pet, name, image, breeds, gender, age, distance, addFavorite, removeFavorite, isFavorite }) => {
+const AnimalDisplay = ({ pet_id, pet, name, url, breeds, gender, age, distance, addFavorite, removeFavorite, isFavorite }) => {
 
     return ( //{pet} is type of pet
         <div> 
             <h4>{pet} : {name}</h4>
-            <img src={image} alt={name} />
+            <img src={url} alt={name} />
             <h5>{breeds}</h5>
             <h5>{gender} | {age} </h5>
             <h6>{distance} miles away</h6>
