@@ -4,6 +4,7 @@ const useAPI = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
+    const [isSuccess, setIsSuccess] = useState(false);
     let userToken = '';
     let userTokenExpiry;
 
@@ -16,37 +17,37 @@ const useAPI = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    grant_type: 'client_credentials', 
+                    grant_type: 'client_credentials',
                     client_id: process.env.REACT_APP_PETFINDER_API,
                     client_secret: process.env.REACT_APP_PETFINDER_SECRET
                 })
             });
             if (!response.ok) {
-                throw new Error('Could not fetch token from petfinder. ');
+                throw new Error('Could not fetch token from petfinder.');
             }
 
             const data = await response.json();
             console.log(data.access_token);
             userToken = data.access_token;
-            const tokenExpiry = new Date().getTime() + data.expires_in *1000;
-
+            //const tokenExpiry = new Date().getTime() + data.expires_in * 1000;
             return data.access_token;
         }
         catch (error) {
-            setError(error.message);
+            setError(error.message)
         }
+
     }
 
     const fetchData = useCallback(async (url) => {
         setIsLoading(true);
         setError(null);
 
-        if(userToken === '') {
-            console.log('Getting a token...');
+        if (userToken === '') {
+            console.log("Getting a token")
             userToken = await getToken();
         }
         else {
-            console.log('Already have a token.');
+            console.log("Already have a token")
             const currentTime = new Date().getTime();
             if (currentTime > userTokenExpiry) {
                 userToken = await getToken();
@@ -59,25 +60,29 @@ const useAPI = () => {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${userToken}`,
                 }
-            });
-
+            }
+            );
             const data = await response.json();
 
             setResult(data);
+            console.log(data.animals)
+            console.log(data.animals[0].id);
+            setIsSuccess(true);
             return data;
         }
         catch (error) {
             setError(error.message);
         }
-
         setIsLoading(false);
     }, []);
 
+
     return {
-        isLoading, 
-        error, 
-        fetchData, 
-        result
+        isLoading,
+        error,
+        fetchData,
+        result,
+        isSuccess
     };
 };
 
