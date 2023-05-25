@@ -8,8 +8,11 @@ import YoutubeSearchedForRoundedIcon from '@mui/icons-material/YoutubeSearchedFo
 function SearchPage() {
   const { isLoading, error, fetchData, result, isSuccess } = useAPI();
 
-
   const [petType, setPetType] = useState('dog');
+
+  const [distance, setDistance] = useState('50');
+
+  const [sortResults, setSortResults] = useState('distance');
 
   const {favorites, addFavorite, removeFavorite} = useFavoritesContext();
   
@@ -25,7 +28,7 @@ function SearchPage() {
     const location = locationRef.current.value;
     const locationValidity = checkZipCode(location);
     if ( location && locationValidity ) {
-        fetchData(`https://api.petfinder.com/v2/animals?sort=distance&type=${petType}&location=${location}&distance=50`);
+        fetchData(`https://api.petfinder.com/v2/animals?sort=${sortResults}&type=${petType}&location=${location}&distance=${distance}`);
     }
   }
 
@@ -44,9 +47,33 @@ function SearchPage() {
               <MenuItem value='barnyard'>Barnyard</MenuItem>
               <MenuItem value='scalesfinsother'>Scales, Fins & Other</MenuItem>
             </Select>
+
+            <Select style={{ flex: 1}} value={distance} 
+            onChange={(e) => setDistance(e.target.value)}>
+              <MenuItem value='50'>50 miles</MenuItem>
+              <MenuItem value='100'>100 miles</MenuItem>
+              <MenuItem value='150'>150 miles</MenuItem>
+              <MenuItem value='200'>200 miles</MenuItem>
+              <MenuItem value='250'>250 miles</MenuItem>
+              <MenuItem value='300'>300 miles</MenuItem>
+              <MenuItem value='350'>350 miles</MenuItem>
+              <MenuItem value='400'>400 miles</MenuItem>
+              <MenuItem value='450'>450 miles</MenuItem>
+              <MenuItem value='500'>500 miles</MenuItem>
+            </Select>
+          
+            <Select style={{ flex: 1}} value={sortResults} 
+            onChange={(e) => setSortResults(e.target.value)}>
+              <MenuItem value='distance'>Nearest</MenuItem>
+              <MenuItem value='-distance'>Furthest</MenuItem>
+              <MenuItem value='recent'>Newest Addition</MenuItem>
+              <MenuItem value='-recent'>Oldest Addition</MenuItem>
+              <MenuItem value='random'>Randomize</MenuItem>
+            </Select>
           
           <Button style={{ flex: 1}} type='submit' endIcon={ <YoutubeSearchedForRoundedIcon /> } onClick={searchPetHandler}>Search</Button>
       </form>
+
       
       {isLoading && <p>Loading ...</p> }
       {error && <p>An error has occured: {error.message}</p> }
