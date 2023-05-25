@@ -21,30 +21,29 @@ function LoginPage() {
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   return (
-    <Box component='form' sx={{ width: '100%', 
-    height: '100%', 
-    //backgroundColor: 'rgba(153, 51, 255, 0.7)',
-    textColor: 'rgba(64, 64, 64, 0.7)'}}> 
-        
-            <TextField id='username' value={username} label='Username' variant='filled' 
-            onChange={(e) => setUsername(e.target.value)}
-            fullWidth
-            />
-        
-            <TextField id='password' value={password} label='Password' variant='filled' 
-            onChange={(e) => setPassword(e.target.value)}
-            type={showPassword ? 'text' : 'password'}
-            fullWidth 
-            InputProps={{
-                endAdornment:
-                <InputAdornment position='end'>
-                    <IconButton onClick={handleClickShowPassword}>
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                </InputAdornment> }} />
+    <Box component='form' 
+      sx={{ width: '100%', height: '100%', textColor: 'rgba(64, 64, 64, 0.7)'}}> 
 
-            <Button variant='outlined' startIcon={<LoginRoundedIcon />} 
-            onClick={handleLogin}>Login</Button>
+      <TextField id='username' value={username} label='Username'
+        variant='filled' onChange={(e) => setUsername(e.target.value)}
+        fullWidth
+        />
+      
+      <TextField id='password' value={password} label='Password'
+        variant='filled' onChange={(e) => setPassword(e.target.value)}
+        type={showPassword ? 'text' : 'password'}
+        fullWidth 
+        InputProps={{
+            endAdornment:
+              <InputAdornment position='end'>
+                <IconButton onClick={handleClickShowPassword}>
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment> }} 
+        />
+
+        <Button variant='outlined' startIcon={<LoginRoundedIcon />} 
+          onClick={handleLogin}>Login</Button>
     </Box>
   );
 }

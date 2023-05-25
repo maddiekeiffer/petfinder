@@ -2,7 +2,8 @@ import React, { useRef, useState } from 'react';
 import useAPI from '../functions/useAPI';
 import AnimalDisplay from './AnimalDisplay';
 import { useFavoritesContext } from '../context/FavoritesContext';
-import { MenuItem, Select, Box, TextField } from '@mui/material';
+import { MenuItem, Select, Box, TextField, Button } from '@mui/material';
+import YoutubeSearchedForRoundedIcon from '@mui/icons-material/YoutubeSearchedForRounded';
 
 function SearchPage() {
   const { isLoading, error, fetchData, result, isSuccess } = useAPI();
@@ -44,21 +45,23 @@ function SearchPage() {
               <MenuItem value='scalesfinsother'>Scales, Fins & Other</MenuItem>
             </Select>
           
-          <button type='submit' onClick={searchPetHandler}>Search</button>
+          <Button type='submit' endIcon={ <YoutubeSearchedForRoundedIcon /> } onClick={searchPetHandler}>Search</Button>
       </form>
       
       {isLoading && <p>Loading ...</p> }
       {error && <p>An error has occured: {error.message}</p> }
+
+      <div style={{display: 'flex', width: '100%', flexWrap: 'wrap'}}>
+
       {isSuccess &&
         (result.animals.map((val) => {
           let photos = null;
           // Check if photos property exists and has at least one item
           if (val.photos && val.photos.length > 0) {
-              photos = <img style={{ width: '200px', height: '150px' }} src={val.photos[0].full} alt={val.name} />;
+              photos = <img style={{ width: '250px', height: '200px' }} src={val.photos[0].full} alt={val.name} />;
           }
 
           return (
-            <Box>
               <AnimalDisplay 
                 key={val.id}
                 pet={petType}
@@ -73,13 +76,13 @@ function SearchPage() {
                 distance={val.distance}
                 addFavorite={() => addFavorite({pet_id: val.id, url: val.url})}
                 removeFavorite={removeFavorite}
-                isFavorite={favorites.some((fav) => fav.id === val.id)} 
+                isFavorite={favorites.some((fav) => fav.pet_id === val.id)} 
               />
-            </Box>
           )
         })
       )}
-    </Box>
+    </div>
+  </Box>
   )
 }
 

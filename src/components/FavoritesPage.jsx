@@ -17,7 +17,7 @@ function FavoritesPage() {
           pet_id={val.pet_id}
           image={val.image}
           name={val.name}
-          breeds={val.breeds}
+          //breeds={val.breeds}
           age={val.age}
           gender={val.gender}
           distance={val.distance}

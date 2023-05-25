@@ -1,7 +1,7 @@
 import React from 'react';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 
 const AnimalDisplay = ({ pet_id, name, image, primaryBreed, secondaryBreed, gender, age, distance, addFavorite, removeFavorite, isFavorite }) => {
 
@@ -18,10 +18,10 @@ const AnimalDisplay = ({ pet_id, name, image, primaryBreed, secondaryBreed, gend
             <h6>{distance} miles away</h6>
 
             {!isFavorite &&
-            <button startIcon={<FavoriteBorderRoundedIcon />} onClick={() => addFavorite(pet_id)}>Add Favorite</button>}
+            <Button startIcon={<FavoriteBorderRoundedIcon />} onClick={() => addFavorite(pet_id)}>Add Favorite</Button>}
 
             {isFavorite &&
-            <button startIcon={<FavoriteRoundedIcon />} onClick={() => removeFavorite(pet_id)}>Remove Favorite</button>}
+            <Button startIcon={<FavoriteRoundedIcon />} onClick={() => removeFavorite(pet_id)}>Remove Favorite</Button>}
         </Box>
       )
 }

@@ -10,7 +10,7 @@ export function favoritesReducer(state, action) {
       return [...state, action.payload]
 
     case REMOVE_FAVORITE:
-      return state.filter((val) => val.gif_id !== action.payload);
+      return state.filter((val) => val.pet_id !== action.payload);
 
     case CLEAR_FAVORITES:
       return [];
