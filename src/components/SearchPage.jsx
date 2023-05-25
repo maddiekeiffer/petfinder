@@ -31,9 +31,9 @@ function SearchPage() {
 
   return (
     <Box >
-      <form style= {{ display: 'flex', flexDirection: 'row' }}>
-          <TextField label='Please enter 6 digit US zip code' inputRef={locationRef} name='location' variant='filled' required />
-          <Select value={petType} 
+      <form style= {{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+          <TextField style={{ flex: 1}} label='Please enter 6 digit US zip code' inputRef={locationRef} name='location' variant='filled' required />
+          <Select style={{ flex: 1}} value={petType} 
             onChange={(e) => setPetType(e.target.value)}>
               <MenuItem value='dog'>Dog</MenuItem>
               <MenuItem value='cat'>Cat</MenuItem>
@@ -45,7 +45,7 @@ function SearchPage() {
               <MenuItem value='scalesfinsother'>Scales, Fins & Other</MenuItem>
             </Select>
           
-          <Button type='submit' endIcon={ <YoutubeSearchedForRoundedIcon /> } onClick={searchPetHandler}>Search</Button>
+          <Button style={{ flex: 1}} type='submit' endIcon={ <YoutubeSearchedForRoundedIcon /> } onClick={searchPetHandler}>Search</Button>
       </form>
       
       {isLoading && <p>Loading ...</p> }
