@@ -105,7 +105,18 @@ function SearchPage() {
                 age={val.age}
                 gender={val.gender}
                 distance={val.distance}
-                addFavorite={() => addFavorite({pet_id: val.id, url: val.url})}
+                addFavorite={() => addFavorite(
+                  {key: val.pet_id,
+                  pet: petType,
+                  pet_id: val.id,
+                  url: val.url,
+                  primaryBreed: val.breeds.primary,
+                  secondaryBreed: val.breeds.secondary,
+                  name: val.name,
+                  image: photos,
+                  age: val.age,
+                  gender: val.gender,
+                  distance: val.distance})}
                 removeFavorite={removeFavorite}
                 isFavorite={favorites.some((fav) => fav.pet_id === val.id)} 
               />

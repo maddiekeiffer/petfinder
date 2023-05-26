@@ -73,7 +73,9 @@ const useAPI = () => {
         catch (error) {
             setError(error.message);
         }
-        setIsLoading(false);
+        finally {
+            setIsLoading(false);
+        }
     }, []);
 
 
