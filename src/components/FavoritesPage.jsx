@@ -9,6 +9,7 @@ function FavoritesPage() {
     <div>
     <h2>Favorites:</h2>
     {favorites.map((val) => {
+      
       return(
         <AnimalDisplay
           url={val.url}
@@ -17,7 +18,8 @@ function FavoritesPage() {
           pet_id={val.pet_id}
           image={val.image}
           name={val.name}
-          //breeds={val.breeds}
+          primaryBreed={val.primaryBreed}
+          secondaryBreed={val.secondaryBreed}
           age={val.age}
           gender={val.gender}
           distance={val.distance}
