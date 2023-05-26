@@ -4,6 +4,7 @@ import AnimalDisplay from './AnimalDisplay';
 import { useFavoritesContext } from '../context/FavoritesContext';
 import { MenuItem, Select, Box, TextField, Button } from '@mui/material';
 import YoutubeSearchedForRoundedIcon from '@mui/icons-material/YoutubeSearchedForRounded';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function SearchPage() {
   const { isLoading, error, fetchData, result, isSuccess } = useAPI();
@@ -75,7 +76,10 @@ function SearchPage() {
       </form>
 
       
-      {isLoading && <p>Loading ...</p> }
+      {isLoading && 
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box> }
       {error && <p>An error has occured: {error.message}</p> }
 
       <div style={{display: 'flex', width: '100%', flexWrap: 'wrap'}}>
