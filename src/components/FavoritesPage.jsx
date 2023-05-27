@@ -7,7 +7,6 @@ function FavoritesPage() {
 
   return (
     <div>
-    <h2>Favorites:</h2>
     {favorites.map((val) => {
       
       return(

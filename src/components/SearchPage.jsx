@@ -2,9 +2,11 @@ import React, { useRef, useState } from 'react';
 import useAPI from '../functions/useAPI';
 import AnimalDisplay from './AnimalDisplay';
 import { useFavoritesContext } from '../context/FavoritesContext';
-import { MenuItem, Select, Box, TextField, Button } from '@mui/material';
+import { MenuItem, Select, Box, TextField } from '@mui/material';
 import YoutubeSearchedForRoundedIcon from '@mui/icons-material/YoutubeSearchedForRounded';
 import CircularProgress from '@mui/material/CircularProgress';
+import { CustomImg } from '../styles/elements/Img';
+import { CustomButton } from '../styles/elements/Button';
 
 function SearchPage() {
   const { isLoading, error, fetchData, result, isSuccess } = useAPI();
@@ -72,7 +74,7 @@ function SearchPage() {
               <MenuItem value='random'>Randomize</MenuItem>
             </Select>
           
-          <Button style={{ flex: 1}} type='submit' endIcon={ <YoutubeSearchedForRoundedIcon /> } onClick={searchPetHandler}>Search</Button>
+          <CustomButton type='submit' endIcon={ <YoutubeSearchedForRoundedIcon /> } onClick={searchPetHandler}>Search</CustomButton>
       </form>
 
       
@@ -89,7 +91,7 @@ function SearchPage() {
           let photos = null;
           // Check if photos property exists and has at least one item
           if (val.photos && val.photos.length > 0) {
-              photos = <img style={{ width: '250px', height: '200px' }} src={val.photos[0].full} alt={val.name} />;
+              photos = <CustomImg src={val.photos[0].full} alt={val.name} />;
           }
 
           return (
