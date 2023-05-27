@@ -77,7 +77,7 @@ function SearchPage() {
 
       
       {isLoading && 
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <CircularProgress />
       </Box> }
       {error && <p>An error has occured: {error.message}</p> }
