@@ -43,7 +43,7 @@ function LoginPage() {
               </InputAdornment> }} 
         />
 
-        <CustomButton variant='outlined' startIcon={<LoginRoundedIcon />} 
+        <CustomButton disabled={username.length < 4 || password.length < 4} variant='outlined' startIcon={<LoginRoundedIcon />} 
           onClick={handleLogin}>Login</CustomButton>
     </Box>
   );
