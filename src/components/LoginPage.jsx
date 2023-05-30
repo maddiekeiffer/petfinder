@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useUserContext } from '../context/UserContext';
-import { Box, TextField, Button, IconButton, InputAdornment } from '@mui/material';
+import { Box, TextField, IconButton, InputAdornment } from '@mui/material';
+import { CustomButton } from '../styles/elements/Button';
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -42,8 +43,8 @@ function LoginPage() {
               </InputAdornment> }} 
         />
 
-        <Button variant='outlined' startIcon={<LoginRoundedIcon />} 
-          onClick={handleLogin}>Login</Button>
+        <CustomButton variant='outlined' startIcon={<LoginRoundedIcon />} 
+          onClick={handleLogin}>Login</CustomButton>
     </Box>
   );
 }

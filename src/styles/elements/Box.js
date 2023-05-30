@@ -10,5 +10,8 @@ export const CustomBox = styled((props) => (
         borderRadius: '5px',
         alignItems: 'center',
         fontFamily: 'sans-serif',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
         flex: 1
     });

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import useAPI from '../functions/useAPI';
 import AnimalDisplay from './AnimalDisplay';
 import { useFavoritesContext } from '../context/FavoritesContext';
-import { MenuItem, Select, Box, TextField } from '@mui/material';
+import { Box, TextField, Select, MenuItem } from '@mui/material';
 import YoutubeSearchedForRoundedIcon from '@mui/icons-material/YoutubeSearchedForRounded';
 import CircularProgress from '@mui/material/CircularProgress';
 import { CustomImg } from '../styles/elements/Img';
@@ -37,8 +37,8 @@ function SearchPage() {
 
   return (
     <Box >
-      <form style= {{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-          <TextField style={{ flex: 1}} label='Please enter 6 digit US zip code' inputRef={locationRef} name='location' variant='filled' required />
+      <form style= {{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '7px' }}>
+          <TextField style={{ borderRadius: '5px' }}label='Enter 6 digit US zip code' inputRef={locationRef} name='location'  required />
           <Select style={{ flex: 1}} value={petType} 
             onChange={(e) => setPetType(e.target.value)}>
               <MenuItem value='dog'>Dog</MenuItem>
