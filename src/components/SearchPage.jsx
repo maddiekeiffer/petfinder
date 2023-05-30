@@ -88,11 +88,11 @@ function SearchPage() {
 
       {isSuccess &&
         (result.animals.map((val) => {
-          let photos = null;
+          let photos;
           // Check if photos property exists and has at least one item
           if (val.photos && val.photos.length > 0) {
               photos = <CustomImg src={val.photos[0].full} alt={val.name} />;
-          }
+          } 
 
           return (
               <AnimalDisplay 
