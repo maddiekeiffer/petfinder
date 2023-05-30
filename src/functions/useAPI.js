@@ -5,8 +5,8 @@ const useAPI = () => {
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
     const [isSuccess, setIsSuccess] = useState(false);
-    let userToken = '';
-    let userTokenExpiry;
+    let userToken = sessionStorage.getItem('userToken');
+    let userTokenExpiry = sessionStorage.getItem('userTokenExpiry');
 
     const getToken = async () => {
         try {
@@ -29,7 +29,11 @@ const useAPI = () => {
             const data = await response.json();
             console.log(data.access_token);
             userToken = data.access_token;
-            //const tokenExpiry = new Date().getTime() + data.expires_in * 1000;
+            userTokenExpiry = new Date().getTime() + data.expires_in * 1000;
+
+            sessionStorage.setItem('userToken', userToken);
+            sessionStorage.setItem('userTokenExpiry', userTokenExpiry);
+
             return data.access_token;
         }
         catch (error) {
@@ -42,18 +46,11 @@ const useAPI = () => {
         setIsLoading(true);
         setError(null);
 
-        if (userToken === '') {
+        const currentTime = new Date().getTime();
+        if (!userToken || currentTime >= userTokenExpiry) {
             console.log("Getting a token")
             userToken = await getToken();
         }
-        else {
-            console.log("Already have a token")
-            const currentTime = new Date().getTime();
-            if (currentTime > userTokenExpiry) {
-                userToken = await getToken();
-            }
-        }
-
         try {
             const response = await fetch(url, {
                 headers: {
