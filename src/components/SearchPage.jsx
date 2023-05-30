@@ -38,7 +38,7 @@ function SearchPage() {
   return (
     <Box >
       <form style= {{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginTop: '7px' }}>
-          <TextField style={{ borderRadius: '5px' }}label='Enter 6 digit US zip code' inputRef={locationRef} name='location'  required />
+          <TextField style={{ borderRadius: '5px' }} label='Enter 6 digit US zip code' inputRef={locationRef} name='location'  required />
           <Select style={{ flex: 1}} value={petType} 
             onChange={(e) => setPetType(e.target.value)}>
               <MenuItem value='dog'>Dog</MenuItem>
@@ -106,7 +106,7 @@ function SearchPage() {
                 image={photos}
                 age={val.age}
                 gender={val.gender}
-                distance={val.distance}
+                distance={(val.distance).toFixed(1)}
                 addFavorite={() => addFavorite(
                   {key: val.pet_id,
                   pet: petType,

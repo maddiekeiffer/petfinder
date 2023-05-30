@@ -6,8 +6,7 @@ export const CustomImg = styled((props) => (
     ({
         border: `3px solid ${theme.palette.secondary.light}`,
         borderRadius: '5px',
-        height: '150px',
-        width: '200px',
+        height: '175px',
+        width: '225px',
         margin: '5px',
-        
     });

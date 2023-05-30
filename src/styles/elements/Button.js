@@ -11,6 +11,6 @@ export const CustomButton = styled((props) => (
         flex: 1,
         '&:hover': {
             color: theme.palette.primary.dark,
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.secondary.dark,
         }
     });

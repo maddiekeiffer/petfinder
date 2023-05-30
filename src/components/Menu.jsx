@@ -44,7 +44,7 @@ function Menu() {
     
 
 return (
-  <Box sx={{ width: '100%', bgcolor: theme.palette.primary.main}}>
+  <Box sx={{ width: '100%', bgcolor: theme.palette.primary.main, borderRadius: '5px'}}>
       <StyledTabs value={value || false} centered>
           <StyledTab component={Link} to="/login" icon={<LogoutRoundedIcon />} value='/login' label='Logout' onClick={handleLogout} />
           <StyledTab component={Link} to="/search" icon={<SearchRoundedIcon />} value='/search' label='Search' />
