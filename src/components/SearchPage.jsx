@@ -118,7 +118,7 @@ function SearchPage() {
                   image: photos,
                   age: val.age,
                   gender: val.gender,
-                  distance: val.distance})}
+                  distance: (val.distance).toFixed(1)})}
                 removeFavorite={removeFavorite}
                 isFavorite={favorites.some((fav) => fav.pet_id === val.id)} 
               />
