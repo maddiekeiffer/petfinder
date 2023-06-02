@@ -21,7 +21,7 @@ function FavoritesPage() {
           secondaryBreed={val.secondaryBreed}
           age={val.age}
           gender={val.gender}
-          distance={(val.distance).toFixed(1)}
+          distance={val.distance}
           isFavorite={true}
           removeFavorite={removeFavorite}
           />
